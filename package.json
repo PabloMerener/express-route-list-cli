@@ -1,0 +1,34 @@
+{
+  "name": "express-route-list-cli",
+  "version": "1.0.0",
+  "description": "Provide an overview of all of the routes that are defined by your application from the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "route-list": "./index.js"
+  },  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloMerener/express-route-list-cli.git"
+  },
+  "keywords": [
+    "express",
+    "route",
+    "endpoint",
+    "list",
+    "cli"
+  ],
+  "author": "Pablo Merener",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloMerener/express-route-list-cli/issues"
+  },
+  "homepage": "https://github.com/PabloMerener/express-route-list-cli#readme",
+  "dependencies": {
+    "express-list-endpoints": "^6.0.0",
+    "lodash": "^4.17.21",
+    "yargs": "^17.3.1"
+  }
+}
