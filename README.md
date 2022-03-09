@@ -7,6 +7,10 @@ npm i express-route-list-cli
 
 <p> Provide an overview of all of the routes that are defined by your application from the command line.<p>
 
+<p>
+  <a href="https://laravel.com/docs/routing#the-route-list">Laravel</a> (route:list) inspired cli command.
+<p>
+
 ```sh
 npx route-list <absolute app file path>
 ```
