@@ -9,7 +9,7 @@ npm i express-route-list-cli
 
 <p>
   <a href="https://laravel.com/docs/routing#the-route-list">Laravel</a> (route:list) inspired cli command.
-<p>
+</p>
 
 ```sh
 npx route-list <absolute app file path>
@@ -32,3 +32,20 @@ Options:
   -w, --middleware  filter endpoints by middleware                      [string]
       --help        Show help                                          [boolean]
 ```
+
+## Shortcut
+
+Add script to package.json
+
+```
+  "scripts": {
+    "route:list": "npx route-list <absolute_app_file_path>"
+  },
+```
+
+The new script has the implicit application path
+
+```
+npm run route:list -- -p products -m PUT
+```
+<img src='./route-list_2.gif'>
