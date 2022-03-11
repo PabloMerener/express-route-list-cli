@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 const fs = require('fs');
+const appRoot = require('app-root-path');
+const path = require('path');
 const yargs = require("yargs");
 const _ = require('lodash');
 const listEndpoints = require('express-list-endpoints');
@@ -14,7 +16,7 @@ const options = yargs
 
 if (!yargs.argv._.length) throw 'missing app file path';
 
-const appFile = yargs.argv._[0];
+const appFile = path.join(appRoot.path, yargs.argv._[0]);
 
 if (!fs.existsSync(appFile)) throw `${appFile} not exists`;
 

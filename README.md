@@ -8,11 +8,11 @@ npm i express-route-list-cli
 <p> Provide an overview of all of the routes that are defined by your application from the command line.<p>
 
 <p>
-  <a href="https://laravel.com/docs/routing#the-route-list">Laravel</a> (route:list) inspired cli command.
+  <a href="https://laravel.com">Laravel</a> (<a href="https://laravel.com/docs/routing#the-route-list">route:list</a>) inspired cli command.
 </p>
 
 ```sh
-npx route-list <absolute app file path>
+npx route-list <relative app file path>
 ```
 
 <p align='center'>
@@ -22,8 +22,10 @@ npx route-list <absolute app file path>
 ## Usage
 
 ```
-~$ npx route-list --help
-route-list <absolute_app_file_path>
+npx route-list --help
+```
+```
+route-list <relative app file path>
 
 Options:
       --version     Show version number                                [boolean]
@@ -33,17 +35,19 @@ Options:
       --help        Show help                                          [boolean]
 ```
 
-## Shortcut
+## Tip
 
 Add script to package.json
 
 ```
   "scripts": {
-    "route:list": "npx route-list <absolute_app_file_path>"
+    "route:list": "npx route-list <relative app file path>"
   },
 ```
 
-The new script has the implicit application path
+<p>"route:list" script has app file path implicit.</p>
+<br>
+<p>In order to run such scrip with parameters add "--" to "npm run route:list" as follows</p>
 
 ```
 npm run route:list -- -p products -m PUT
