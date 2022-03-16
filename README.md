@@ -19,6 +19,18 @@ npx route-list <relative app file path>
     <img src='./route-list.gif'>
 </p>
 
+## Rooting files
+
+<p> In order to get routing files type "-r" or "-d" (for detailed info)<p>
+
+```sh
+npx route-list <relative app file path> -r
+```
+
+<p align='center'>
+    <img src='./rooting_files.gif'>
+</p>
+
 ## Usage
 
 ```
@@ -28,11 +40,13 @@ npx route-list --help
 route-list <relative app file path>
 
 Options:
-      --version     Show version number                                [boolean]
-  -p, --path        filter endpoints by path                            [string]
-  -m, --method      filter endpoints by method                          [string]
-  -w, --middleware  filter endpoints by middleware                      [string]
-      --help        Show help                                          [boolean]
+      --version               Show version number                      [boolean]
+  -p, --path                  filter endpoints by path                  [string]
+  -m, --method                filter endpoints by method                [string]
+  -w, --middleware            filter endpoints by middleware            [string]
+  -r, --routingFiles          show routing files
+  -d, --detailedRoutingFiles  show detailed routing files
+      --help                  Show help                                [boolean]
 ```
 
 ## Tip
