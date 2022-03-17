@@ -1,42 +1,18 @@
 # express-route-list-cli
-
+## Install
 ```sh
 npm i express-route-list-cli
 ```
 ## Overview
-
-<p> Provide an overview of all of the routes that are defined by your application from the command line.<p>
-
+<p> Provide an overview of all of the routes that are defined by your application from the command line.</p>
 <p>
   <a href="https://laravel.com">Laravel</a> (<a href="https://laravel.com/docs/routing#the-route-list">route:list</a>) inspired cli command.
 </p>
 
-```sh
-npx route-list <relative app file path>
-```
-
-<p align='center'>
-    <img src='./route-list.gif'>
-</p>
-
-## Rooting files
-
-<p> In order to get routing files type "-r" or "-d" (for detailed info)<p>
-
-```sh
-npx route-list <relative app file path> -r
-```
-
-<p align='center'>
-    <img src='./rooting_files.gif'>
-</p>
-
 ## Usage
-
 ```
 npx route-list --help
-```
-```
+
 route-list <relative app file path>
 
 Options:
@@ -48,6 +24,9 @@ Options:
   -d, --detailedRoutingFiles  show detailed routing files
       --help                  Show help                                [boolean]
 ```
+<p align='center'>
+    <img src='./route-list.gif'>
+</p>
 
 ## Tip
 
@@ -66,4 +45,3 @@ Add script to package.json
 ```
 npm run route:list -- -p products -m PUT
 ```
-<img src='./route-list_2.gif'>
