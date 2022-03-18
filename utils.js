@@ -36,8 +36,9 @@ const showRoutingFiles = async (detailedRoutingFiles = false) => {
     })
 }
 
-const showEndpointList = (relativeAppFilePath, { path, method, middleware }) => {
-    // Show endpoints list
+const showEndpointList = (argv) => {
+    const { path, method, middleware } = argv;
+    const relativeAppFilePath = argv._[0];
     const appFile = pathPackage.join(process.cwd(), relativeAppFilePath);
     if (!fs.existsSync(appFile)) throw `${appFile} not exists`;
     const app = require(appFile);
