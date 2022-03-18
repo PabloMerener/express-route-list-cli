@@ -20,7 +20,7 @@ Options:
   -p, --path                  filter endpoints by path                  [string]
   -m, --method                filter endpoints by method                [string]
   -w, --middleware            filter endpoints by middleware            [string]
-  -r, --routingFiles          show routing files
+  -f, --routingFiles          show routing files
   -d, --detailedRoutingFiles  show detailed routing files
       --help                  Show help                                [boolean]
 ```

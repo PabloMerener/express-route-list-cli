@@ -1,6 +1,6 @@
 {
   "name": "express-route-list-cli",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Provide an overview of all of the routes that are defined by your application from the command line",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/PabloMerener/express-route-list-cli#readme",
   "dependencies": {
-    "app-root-path": "^3.0.0",
     "express-list-endpoints": "^6.0.0",
     "express-router-dependency-graph": "^1.1.1",
     "lodash": "^4.17.21",
