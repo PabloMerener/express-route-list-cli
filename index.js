@@ -13,10 +13,10 @@ const { argv } = yargs
     .help(true);
 
 if (!argv._.length) throw 'missing app file path';
+const relativeAppFilePath = argv._[0];
 
-(async () => {
-    const { routingFiles, detailedRoutingFiles } = argv;
-    if (routingFiles || detailedRoutingFiles) await showRoutingFiles(detailedRoutingFiles);
+(async (relativeAppFilePath, { path, method, middleware, routingFiles, detailedRoutingFiles }) => {
+    await showRoutingFiles(routingFiles, detailedRoutingFiles);
 
-    showEndpointList(argv);
-})()
+    showEndpointList(relativeAppFilePath, path, method, middleware);
+})(relativeAppFilePath, argv);

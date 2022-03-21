@@ -27,21 +27,3 @@ Options:
 <p align='center'>
     <img src='./route-list.gif'>
 </p>
-
-## Tip
-
-Add script to package.json
-
-```
-  "scripts": {
-    "route:list": "npx route-list <relative app file path>"
-  },
-```
-
-<p>"route:list" script has app file path implicit.</p>
-<br>
-<p>In order to run such scrip with parameters add "--" to "npm run route:list" as follows</p>
-
-```
-npm run route:list -- -p products -m PUT
-```
