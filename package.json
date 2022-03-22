@@ -1,6 +1,6 @@
 {
   "name": "express-route-list-cli",
-  "version": "2.0.4",
+  "version": "2.0.6",
   "description": "Provide an overview of all of the routes that are defined by your application from the command line",
   "main": "index.js",
   "scripts": {

@@ -12,11 +12,23 @@ const { argv } = yargs
     .option('d', { alias: 'detailedRoutingFiles', describe: 'show detailed routing files', type: 'boolen', demandOption: false })
     .help(true);
 
-if (!argv._.length) throw 'missing app file path';
-const relativeAppFilePath = argv._[0];
+const relativeAppFilePath = argv._.length ? argv._[0] : null;
 
 (async (relativeAppFilePath, { path, method, middleware, routingFiles, detailedRoutingFiles }) => {
-    await showRoutingFiles(routingFiles, detailedRoutingFiles);
+    if (routingFiles || detailedRoutingFiles) await showRoutingFiles(routingFiles, detailedRoutingFiles);
 
-    showEndpointList(relativeAppFilePath, path, method, middleware);
-})(relativeAppFilePath, argv);
+    if (relativeAppFilePath || path || method || middleware) {
+        if (relativeAppFilePath) {
+            showEndpointList(relativeAppFilePath, path, method, middleware);
+        } else {
+            throw 'missing app file path';
+        }
+    } else if (!routingFiles && !detailedRoutingFiles) {
+        throw 'At least one of the following parameters is required: <relative app file path>, -f or -d';
+    }
+})(relativeAppFilePath, argv)
+    .catch(error => console.log(
+        'Documentation: https://github.com/PabloMerener/express-route-list-cli \n'
+        + 'Help: npx route-list --help \n\n'
+        + error
+    ));

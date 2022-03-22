@@ -6,57 +6,55 @@ const { analyzeDependency } = require('express-router-dependency-graph');
 const listEndpoints = require('express-list-endpoints');
 
 const showRoutingFiles = async (routingFiles, detailedRoutingFiles) => {
-    if (routingFiles || detailedRoutingFiles) {
-        const results = (await analyzeDependency({
-            outputFormat: 'json',
-            rootDir: process.cwd(),
-            rootBaseUrl: '',
-            includeOnly: '',
-            doNotFollow: ['^node_modules']
-        })).map(e => {
-            return {
-                ...e,
-                filePath: e.filePath.replace(process.cwd(), '') // remove current path directory
-            };
-        });
+    const results = (await analyzeDependency({
+        outputFormat: 'json',
+        rootDir: process.cwd(),
+        rootBaseUrl: '',
+        includeOnly: '',
+        doNotFollow: ['^node_modules']
+    })).map(e => {
+        return {
+            ...e,
+            filePath: e.filePath.replace(process.cwd(), '') // remove current path directory
+        };
+    });
 
-        const options = { compact: true };
+    const options = { compact: true };
 
-        // Show routing files
-        console.log(
-            Table(
-                [{ value: "routing files", align: "left" }],                   // header
-                results.map(e => { return { "routing files": e.filePath }; }), // rows
-                options
-            ).render()
-        );
+    // Show routing files
+    console.log(
+        Table(
+            [{ value: "routing files", align: "left" }],                   // header
+            results.map(e => { return { "routing files": e.filePath }; }), // rows
+            options
+        ).render()
+    );
 
-        const pathsPerRouteFile = detailedRoutingFiles ?
-            results :
-            results // Remove routing file details (except method "use")
-                .filter(e => e.routers.find(f => f.method === 'use'))
-                .map(e => { return { ...e, routers: e.routers.filter(f => f.method === 'use') } });
+    const pathsPerRouteFile = detailedRoutingFiles ?
+        results :
+        results // Remove routing file details (except method "use")
+            .filter(e => e.routers.find(f => f.method === 'use'))
+            .map(e => { return { ...e, routers: e.routers.filter(f => f.method === 'use') } });
 
-        // Show routing files details
-        pathsPerRouteFile.forEach(e => {
-            const header = [
-                { value: "path", align: "left" },
-                { value: "method" },
-                { value: 'middlewares' }
-            ];
-            const rows = _.orderBy(e.routers.filter(e => e.path[0] === '/'), 'path');
-            console.group('');
-            console.log(e.filePath);
+    // Show routing files details
+    pathsPerRouteFile.forEach(e => {
+        const header = [
+            { value: "path", align: "left" },
+            { value: "method" },
+            { value: 'middlewares' }
+        ];
+        const rows = _.orderBy(e.routers.filter(e => e.path[0] === '/'), 'path');
+        console.group('');
+        console.log(e.filePath);
 
-            // Remove middlewares column when it has no values
-            if (_.uniq(_.map(rows, 'middlewares')).filter(e => e.length).length === 0) {
-                header.pop();
-            }
+        // Remove middlewares column when it has no values
+        if (_.uniq(_.map(rows, 'middlewares')).filter(e => e.length).length === 0) {
+            header.pop();
+        }
 
-            console.log(Table(header, rows, options).render());
-            console.groupEnd();
-        })
-    }
+        console.log(Table(header, rows, options).render());
+        console.groupEnd();
+    })
 }
 
 const showEndpointList = (relativeAppFilePath, argvPath, argvMethod, argvMiddleware) => {
@@ -79,9 +77,8 @@ const showEndpointList = (relativeAppFilePath, argvPath, argvMethod, argvMiddlew
         const rows = _.orderBy(endpoints, 'path');
 
         console.log(Table(header, rows, { compact: true }).render());
-
     } else {
-        throw `${appFile} not exists`;
+        throw `File ${appFile} not exists`;
     }
 }
 
